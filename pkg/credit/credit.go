@@ -2,7 +2,7 @@ package credit
 
 import "math"
 
-func CalculateCredit(sumOfCredit, annualInterestRate, durationInYears float64) (int64, int64, int64) {
+func Calculate(sumOfCredit, annualInterestRate, durationInYears float64) (int64, int64, int64) {
 	durationInMonths := durationInYears * 12.0
 	monthlyInterestRate := annualInterestRate / 12.0 / 100.0
 	a := (1.0 + monthlyInterestRate)
@@ -11,6 +11,6 @@ func CalculateCredit(sumOfCredit, annualInterestRate, durationInYears float64) (
 	monthlyPayment := rate * sumOfCredit / 100.0
 	monthlyPaymentInRub := int64(math.Round(monthlyPayment))
 	totalPayment := int64(durationInMonths) * monthlyPaymentInRub
-	interestPayment := totalPayment - int64(sumOfCredit)
+	interestPayment := totalPayment - int64(sumOfCredit / 100.0)
 	return monthlyPaymentInRub, interestPayment, totalPayment
 }

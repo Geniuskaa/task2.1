@@ -6,5 +6,8 @@ import (
 )
 
 func main() {
-	fmt.Println(credit.CalculateCredit(1_000_000_00, 20, 3))
+	monthlyPayment, interestPayment, totalPayment := credit.Calculate(1_000_000_00, 20, 3)
+	fmt.Println(monthlyPayment)
+	fmt.Println(interestPayment)
+	fmt.Println(totalPayment)
 }
